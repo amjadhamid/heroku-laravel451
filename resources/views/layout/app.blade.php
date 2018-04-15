@@ -64,7 +64,12 @@
             }
         </style>
     </head>
+        {{-- include argument in the router then put the value on here --}}
+
+     
+
     <body>
+    {{-- <h1>{{$name}} </h1> --}}
       @yield('content');
     </body>
 </html>

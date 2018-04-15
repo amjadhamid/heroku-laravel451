@@ -7,21 +7,28 @@ use Illuminate\Http\Request;
 class pageController extends Controller
 {
 
-
+// include argument withthe Controllers
+// then in layout and pages you can do any thing
+// in the router you just connect the controller with view
 
 public function index() {
-return view("pages.index");
+    $name='index';
+return view("pages.index" )->with('name',$name);
 }
 
 
 public function about() {
-    return view("pages.about");
+    $name='about';
+
+    return view("pages.about")->with('name',$name);
     }
 
 
 
     public function hitit() {
-        return view("pages.hitit");
+        $desc=array ('name'=>'hitit' , 'language'=> 'turkch');
+
+        return view("pages.hitit")->with('desc',$desc);
         }
 
 
