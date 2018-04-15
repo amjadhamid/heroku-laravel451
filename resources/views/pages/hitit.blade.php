@@ -2,7 +2,7 @@
 
 @section('content')
     
-
+ <div class="container">
   <div class="content">
                 <div class="title m-b-md">
                    hitit
@@ -18,4 +18,5 @@
                   </ul>
                </div>
             </div>
+  </div>
     @endsection
