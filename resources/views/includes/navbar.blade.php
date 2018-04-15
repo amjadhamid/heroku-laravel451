@@ -1,4 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<style>
+.shadow-none{
+    border : 0 ;
+    -webkit-box-shadow : none ;
+    box-shadow : none ;
+}
+.navbar
+</style>
+<nav class="navbar navbar-expand-lg shadow-none navbar-light bg-light">
   <a class="navbar-brand" href="#">Hitit Learning</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,5 +26,11 @@
       </li>
     </ul>
    
+   <ul class ="nav navbar-nav navbar-right">
+     <button type="button" class="btn btn-secondary">Login</button>
+     <button type="button" class="btn btn-secondary">Register</button>
+
+    </ul>
+
   </div>
 </nav>

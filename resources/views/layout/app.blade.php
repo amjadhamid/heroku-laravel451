@@ -16,7 +16,9 @@
         you must include it in the project --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://bootswatch.com/4/lux/bootstrap.min.css" rel="stylesheet">
-
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
         {{-- include argument in the router then put the value on here --}}
 
@@ -26,6 +28,7 @@
     {{-- <h1>{{$name}} </h1> --}}
 
 @include('includes.navbar');
+@include('includes.slibar');
 
       @yield('content');
     </body>
