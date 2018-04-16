@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// to talk to the controller you must go to App\Post
+// and use it
+use App\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // تمرير البوست كمتغير وتضمينه داخل الصفحة
+        $posts = Post::all();
+       return view('posts.index')->with('posts' , $posts);
     }
 
     /**
