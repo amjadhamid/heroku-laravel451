@@ -5,31 +5,23 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                   <h1>posts</h1>
-               @if (count($posts) > 0 )
-                   
-               
-               @foreach ($posts as $post)
+                   <h1>post</h1>
+         
                      <div class="col-sm-6 col-md-6 col-lg-3">          
-                         <div class="panel panel-primary">
+                         <div class="panel panel-danger container">
                            <div class="panel-heading"><h2>{{$post->firstname}}-{{$post->lastname}}</h2></div>
                            <div class="panel-body">
                           
                            {{$post->subject}}
+                           {{$post->body}}
+
                            <span class="label label-danger">created_at:{{$post->created_at}}</span>
-                           <a class='pull-right' href="/posts/{{$post->id}}" class="btn btn-primary" role="button">More</a>
+                         <a class='pull-right' href="/posts" class="btn btn-primary" role="button">Back</a>
+
                            </div>
                          </div>
                      </div>
-               @endforeach
             
-                
-               @else
-
-                  <div class="alert alert-warning" role="alert">No Posts</div>
-  
-            
-               @endif
 
 
 
