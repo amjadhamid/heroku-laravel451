@@ -21,6 +21,9 @@
     
         <a class="nav-link" href="/hitit">Hitit</a>
       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/posts">Posts</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
       </li>
