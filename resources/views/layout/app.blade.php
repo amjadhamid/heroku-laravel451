@@ -28,6 +28,7 @@
     {{-- <h1>{{$name}} </h1> --}}
 
 @include('includes.navbar');
+@include('includes.messeges');
 
       @yield('content');
     </body>

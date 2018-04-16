@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 // to talk to the controller you must go to App\Post
-// and use it
+// and use it ه, in laravel way
 use App\Post;
-
+// the normall way
+use DB;
 class PostController extends Controller
 {
     /**
@@ -16,9 +17,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        // تمرير البوست كمتغير وتضمينه داخل الصفحة
-        $posts = Post::all();
-       return view('posts.index')->with('posts' , $posts);
+        // تمرير البوست كمتغير وتضمينه داخل الصفحةي
+        $posts = Post::orderBy('created_at' ,'desc')->get();
+        // $posts = DB::select('select * from posts');
+        // $posts = Post::orderBy('created_at' ,'desc')->take(1)->get();
+        $posts = Post::orderBy('created_at' ,'desc')->paginate(2);
+
+        return view('posts.index')->with('posts' , $posts);
     }
 
     /**
@@ -28,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+     return view('posts.create');
     }
 
     /**
@@ -39,7 +44,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // first validate for seceurity
+
+        $this->validate($request,[
+         'subject'=>'required',
+         'firstname'=>'required',
+         'lastname'=>'required',
+         'body'=>'required'
+     ]);
+
+        //  then send the inbut
+        $post = new post ;
+        $post->subject = $request->input('subject');
+        $post->firstname = $request->input('firstname');
+        $post->lastname = $request->input('lastname');
+        $post->body  = $request->input('body');
+        $post->save();
+        //  then sho if it ok
+     return redirect('/posts')->with('success' , 'Done successfully');
+      ;
+     
     }
 
     /**

@@ -5,7 +5,10 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                   <h1>post</h1>
+                   <h1>post -<a class='pull-right' href="/posts" class="btn btn-primary" role="button">Back</a>
+
+                   
+                   </h1>
          
                      <div class="col-sm-6 col-md-6 col-lg-3">          
                          <div class="panel panel-danger container">

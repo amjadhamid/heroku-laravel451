@@ -10,7 +10,7 @@
                    
                
                @foreach ($posts as $post)
-                     <div class="col-sm-6 col-md-6 col-lg-3">          
+                     <div class="col-sm-12 col-md-12 col-lg-6">          
                          <div class="panel panel-primary">
                            <div class="panel-heading"><h2>{{$post->firstname}}-{{$post->lastname}}</h2></div>
                            <div class="panel-body">
@@ -22,7 +22,7 @@
                          </div>
                      </div>
                @endforeach
-            
+            {{$posts->links()}}
                 
                @else
 
