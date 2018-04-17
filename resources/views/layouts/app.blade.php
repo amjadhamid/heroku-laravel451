@@ -26,7 +26,7 @@
 
  <style>
 .shadow-none{
-    
+
     border : 0 ;
     -webkit-box-shadow : none ;
     box-shadow : none ;
@@ -95,6 +95,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                                                          <li><a href="/Dashboard">Dashboard</a></li>
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -114,7 +116,6 @@
             </div>
         </nav>
 
-{{--  @include('includes.navbar');  --}}
 @include('includes.messeges');
 
 

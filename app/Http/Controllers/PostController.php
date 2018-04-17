@@ -60,6 +60,7 @@ class PostController extends Controller
         $post->firstname = $request->input('firstname');
         $post->lastname = $request->input('lastname');
         $post->body  = $request->input('body');
+        $post->user_id  =auth()->user()->id;
         $post->save();
         //  then come back to the posts page with new massege
      return redirect('/posts')->with('success' , 'Done successfully');

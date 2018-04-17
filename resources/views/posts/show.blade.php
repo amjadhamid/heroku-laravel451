@@ -32,7 +32,7 @@
                            {{$post->subject}}
                            {!!$post->body!!}
 
-                           <span class="label label-danger">created_at:{{$post->created_at}}</span>
+                           <span class="label label-info">created_at:{{$post->created_at}} by {{$post->user->name}}</span>
                          <a class='pull-right' href="/posts" class="btn btn-primary" role="button">Back</a>
 
                            </div>
