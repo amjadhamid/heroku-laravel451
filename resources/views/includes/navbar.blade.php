@@ -33,9 +33,8 @@
     </ul>
    
    <ul class ="nav navbar-nav navbar-right">
-     <button type="button" class="btn btn-secondary">Login</button>
-     <button type="button" class="btn btn-secondary">Register</button>
-
+     <li><a href="{{ route('login') }}">Login</a></li>
+     <li><a href="{{ route('register') }}">Register</a></li>
     </ul>
 
   </div>

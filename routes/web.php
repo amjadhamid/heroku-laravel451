@@ -47,3 +47,6 @@ Route::get('/hitit' , 'pageController@hitit' );
     //     })
 // return view('WELCOME')
 //      )};
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
