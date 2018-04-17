@@ -54,14 +54,14 @@ class PostController extends Controller
          'body'=>'required'
      ]);
 
-        //  then send the inbut
+        //  then send the inbut as a new object 
         $post = new post ;
         $post->subject = $request->input('subject');
         $post->firstname = $request->input('firstname');
         $post->lastname = $request->input('lastname');
         $post->body  = $request->input('body');
         $post->save();
-        //  then sho if it ok
+        //  then come back to the posts page with new massege
      return redirect('/posts')->with('success' , 'Done successfully');
       ;
      

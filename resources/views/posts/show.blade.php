@@ -16,7 +16,7 @@
                            <div class="panel-body">
                           
                            {{$post->subject}}
-                           {{$post->body}}
+                           {!!$post->body!!}
 
                            <span class="label label-danger">created_at:{{$post->created_at}}</span>
                          <a class='pull-right' href="/posts" class="btn btn-primary" role="button">Back</a>
