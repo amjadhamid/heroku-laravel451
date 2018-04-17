@@ -49,4 +49,4 @@ Route::get('/hitit' , 'pageController@hitit' );
 //      )};
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Dashboard', 'DashboardController@index')->name('home');
