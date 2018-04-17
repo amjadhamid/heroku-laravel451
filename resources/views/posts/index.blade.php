@@ -13,6 +13,7 @@
                      <div class="col-sm-12 col-md-12 col-lg-6">          
                          <div class="panel panel-primary">
                            <div class="panel-heading"><h2>{{$post->firstname}}-{{$post->lastname}}</h2></div>
+
                            <div class="panel-body">
                           
                            {{$post->subject}}

@@ -12,9 +12,23 @@
          
                      <div class="col-sm-6 col-md-6 col-lg-3">          
                          <div class="panel panel-danger container">
-                           <div class="panel-heading"><h2>{{$post->firstname}}-{{$post->lastname}}</h2></div>
-                           <div class="panel-body">
+                           <div class="panel-heading">{{$post->firstname}}-{{$post->lastname}}
+                          <a class='pull-right' href="/posts/{{$post->id}}/edit" class="btn btn-primary" role="button">Edit</a>
+
+
+                        </div>
+                          <div class="panel-body">
                           
+                            {!! Form::open(['action' => ['PostController@update', $post->id] , 'method'=>'POST']) !!}
+
+                            {{Form::hidden('_method' , 'DELETE')}}
+
+                            {{Form::submit('Delete' ,['class' => 'pull-right btn btn-danger btn-lg' , ])}}
+
+                            {!! Form::close() !!} 
+
+
+
                            {{$post->subject}}
                            {!!$post->body!!}
 

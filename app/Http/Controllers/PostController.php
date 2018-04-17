@@ -75,6 +75,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
+
+       
+
         $post = Post::find($id);
         return view('posts.show')->with('post' , $post);
      
@@ -88,8 +91,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $post = Post::find($id);
+        return view('posts.edit')->with('post' , $post);
+         }
 
     /**
      * Update the specified resource in storage.
@@ -100,8 +104,24 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $this->validate($request,[
+            'subject'=>'required',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'body'=>'required'
+        ]);
+
+
+  // find is so important because he will update all the posts
+  $post =  post::find($id) ;
+  $post->subject = $request->input('subject');
+  $post->firstname = $request->input('firstname');
+  $post->lastname = $request->input('lastname');
+  $post->body  = $request->input('body');
+  $post->save();
+  //  then come back to the posts page with new massege
+return redirect('/posts')->with('success' , 'Done successfully');
+;    }
 
     /**
      * Remove the specified resource from storage.
@@ -111,6 +131,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post =  post::find($id) ;
+        $post->delete();
+        $post->save();    
+        return redirect('/posts')->with('success' , 'Done successfully');
+
     }
 }
