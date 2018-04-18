@@ -15,6 +15,8 @@ public function index() {
     $name='index';
 return view("pages.index" )->with('name',$name);
 }
+
+
 public function database() {
     // Schema::create('networks', function(Blueprint  $table)
     // {

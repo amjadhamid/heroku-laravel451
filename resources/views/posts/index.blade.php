@@ -15,8 +15,9 @@
                            <div class="panel-heading"><h2>{{$post->firstname}}-{{$post->lastname}}</h2></div>
 
                            <div class="panel-body">
-                          
                            {{$post->subject}}
+                             <img src="/storage/post_image/{{$post->post_image}}" alt="$post->post_image" class="img-thumbnail">
+
                            <span class="label label-info">created_at:{{$post->created_at}} by {{$post->user->name}}</span>
                            <a class='pull-right' href="/posts/{{$post->id}}" class="btn btn-primary" role="button">More</a>
                            </div>

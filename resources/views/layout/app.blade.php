@@ -26,6 +26,7 @@
 
  <style>
 .shadow-none{
+
     border : 0 ;
     -webkit-box-shadow : none ;
     box-shadow : none ;
@@ -90,11 +91,14 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                <li><a href="/Dashboard">Dashboard</a></li>
+
+      
+                            </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                  <li><a href="/Dashboard">Dashboard</a></li>
 
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -115,14 +119,13 @@
             </div>
         </nav>
 
-{{--  @include('includes.navbar');  --}}
 @include('includes.messeges');
 
 
 
-      @yield('content')
+  
 
-    
+        @yield('content')
     </div>
 
     <!-- Scripts -->

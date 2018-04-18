@@ -10,7 +10,7 @@
   </div>
   <div class="card-body">
 
-{!! Form::open(['action' => 'PostController@store' , 'method'=>'POST']) !!}
+{!! Form::open(['action' => 'PostController@store' , 'method'=>'POST' ,'enctype'=>'multipart/form-data']) !!}
     
     
     <div class="form-group">
@@ -31,6 +31,10 @@
     <div class="form-group">
     {{Form::label('body', 'Discriptions')}}
     {{Form::textarea('body' , '' , ['class' => 'form-control' , 'placeholder'=> 'Discriptions ' , 'id'=>'article-ckeditor' ])}}
+    </div>
+
+ <div class="form-group">
+    {{Form::file('post_image' , '' , ['class' => 'form-control' ])}}
     </div>
 
     {{Form::submit('Add Post' ,['class' => 'btn btn-primary btn-lg' , ])}}

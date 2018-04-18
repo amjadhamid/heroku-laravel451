@@ -1,6 +1,8 @@
 <?php
+use Illuminate\Validation\Rule;
 
 namespace App\Http\Controllers;
+
 
 use Illuminate\Http\Request;
 // to talk to the controller you must go to App\Post
@@ -8,8 +10,17 @@ use Illuminate\Http\Request;
 use App\Post;
 // the normall way
 use DB;
+
+use Illuminate\Support\Facades\Storage;
+
 class PostController extends Controller
 {
+//    من اجل الا يدخل الشخص الى تعديل المحتوى ويمكنهم الدخول الى البوستات
+   public function __construct()
+   {
+       $this->middleware('auth',['except'=>['index', 'show']]);
+   }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,31 +53,60 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
-
-        // first validate for seceurity
-
-        $this->validate($request,[
+        //
+        $this->validate($request ,[
          'subject'=>'required',
          'firstname'=>'required',
          'lastname'=>'required',
-         'body'=>'required'
-     ]);
+         'body'=>'required',
+         'post_image'=>'image|nullable|max:1024',
+        ]);
 
-        //  then send the inbut as a new object 
-        $post = new post ;
-        $post->subject = $request->input('subject');
-        $post->firstname = $request->input('firstname');
-        $post->lastname = $request->input('lastname');
-        $post->body  = $request->input('body');
-        $post->user_id  =auth()->user()->id;
-        $post->save();
-        //  then come back to the posts page with new massege
-     return redirect('/posts')->with('success' , 'Done successfully');
-      ;
-     
+
+        if($request->hasFile('post_image')){  
+
+    $filenameWithExtention = $request->file('post_image')->getClientOriginalName();
+    $fileName = pathinfo($filenameWithExtention,PATHINFO_FILENAME);
+    $extension = $request->file('post_image')->getClientOriginalExtension();
+    $fileNameStore = $fileName .'_'.time().'.'.$extension;
+
+    $path = $request->file('post_image')->move(base_path() . '/public/images/', $fileNameStore);
+  
+ 
+            
+        }else{
+                $fileNameStore = 'no_image.jfif';
+              }
+ 
+// if($request->hasFile('post_image')){
+//     $filenameWithExtention = $request->file('post_image')->getClientOriginalName();
+//     $fileName = pathinfo($filenameWithExtention,PATHINFO_FILENAME);
+//     $extension = $request->file('post_image')->getClientOriginalExtension();
+//     $fileNameStore = $fileName .'_'.time().'.'.$extension;
+//     $path = $request->file('post_image')->storeAs('public/post_image',$fileNameStore);
+// }else{
+//     $fileNameStore = 'noImage.jpg';
+// }
+
+
+
+
+
+ 
+$post = new Post;
+$post->subject   = $request->input('subject');
+$post->firstname = $request->input('firstname');
+$post->lastname  = $request->input('lastname');
+$post->body      = $request->input('body');
+$post->user_id      =  auth()->user()->id;
+$post->post_image      =  $fileNameStore;
+$post->save();
+
+        return redirect('/posts')->with('success', 'Done successfully');
     }
+   
 
     /**
      * Display the specified resource.
@@ -92,7 +132,14 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+//     التعريف بالاول
         $post = Post::find($id);
+
+        // for security
+        if(auth()->user()->id !== $post->user_id)
+        return view('posts')->with('error' , 'Unauthorized');
+
+        
         return view('posts.edit')->with('post' , $post);
          }
 
@@ -112,12 +159,27 @@ class PostController extends Controller
             'body'=>'required'
         ]);
 
+        if($request->hasFile('post_image')){  
 
+            $filenameWithExtention = $request->file('post_image')->getClientOriginalName();
+            $fileName = pathinfo($filenameWithExtention,PATHINFO_FILENAME);
+            $extension = $request->file('post_image')->getClientOriginalExtension();
+            $fileNameStore = $fileName .'_'.time().'.'.$extension;
+        
+            $path = $request->file('post_image')->move(base_path() . '/public/images/', $fileNameStore);
+          
+         
+                    
+                }
+         
   // find is so important because he will update all the posts
   $post =  post::find($id) ;
   $post->subject = $request->input('subject');
   $post->firstname = $request->input('firstname');
   $post->lastname = $request->input('lastname');
+  if($request->hasFile('post_image')){
+    $post->post_image = $fileNameStore;
+  }
   $post->body  = $request->input('body');
   $post->save();
   //  then come back to the posts page with new massege
@@ -133,6 +195,13 @@ return redirect('/posts')->with('success' , 'Done successfully');
     public function destroy($id)
     {
         $post =  post::find($id) ;
+//security
+        if(auth()->user()->id !== $post->user_id)
+        return view('posts')->with('error' , 'Unauthorized');
+      if($post->post_image != 'mo_image.jpg'){
+          Storage::delete('public/post_image/' . $post->post_image);
+      }
+
         $post->delete();
         $post->save();    
         return redirect('/posts')->with('success' , 'Done successfully');
