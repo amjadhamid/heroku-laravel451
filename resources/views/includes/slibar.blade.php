@@ -12,31 +12,31 @@
     <div class="item active">
       <img src="http://turkpress.com/sites/default/files/field/image/turkey_country_history_downloads_wallpaper1.jpg" alt="Chania">
       <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The 1atmosphere in Chania has a touch of Florence and Venice.</p>
+        <h3>Turkey</h3>
+        <p>.</p>
       </div>
     </div>
 
     <div class="item">
       <img src="https://www.turkpress.co/sites/default/files/field/image/swr_ryysy_304.jpg"> <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The 2atmosphere in Chania has a touch of Florence and Venice.</p>
+        <h3>Turkey</h3>
+        <p>.</p>
       </div>
     </div>
 
     <div class="item">
       <img src="https://turkeytoarab.com/wp-content/uploads/2017/12/%D8%A7%D9%84%D9%87%D8%AC%D8%B1%D8%A9-%D8%A7%D9%84%D9%89-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7.jpg" alt="Flower">
       <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beautiful flowers in Kolymbari, Crete.</p>
+        <h3>Turkey</h3>
+        <p>.</p>
       </div>
     </div>
 
     <div class="item">
       <img src="https://media-arabia.com/wp-content/uploads/2017/03/4575784f80040c365324d51f156221d5.jpg" alt="Flower">
       <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beautiful flowers in Kolymbari, Crete.</p>
+        <h3>Turkey</h3>
+        <p>.</p>
       </div>
     </div>
   </div>
